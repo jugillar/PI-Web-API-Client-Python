@@ -83,8 +83,8 @@ class ApiClient(object):
         self.default_headers['User-Agent'] = value
 
 
-    def set_kerberos_auth(self):
-        self.rest_client.auth = HTTPKerberosAuth(force_preemptive=True, mutual_authentication=OPTIONAL, delegate=True)
+    def set_kerberos_auth(self, principal):
+        self.rest_client.auth = HTTPKerberosAuth(principal=principal, force_preemptive=True, mutual_authentication=OPTIONAL, delegate=True)
 
     def set_ntlm_auth(self, username, password):
         self.rest_client.auth = HttpNtlmAuth(username, password)
